@@ -28,10 +28,45 @@ public class WordWrapTest
         result.Should().Be("wo\nrd");
     }
 
+    [Fact]
+    public void Si_Envioabcdefghijy3_Debe_Retornarabc_ndef_nghi_nj()
+    {
+        var result = Wrap("abcdefghij", 3);
+
+        result.Should().Be("abc\ndef\nghi\nj");
+    }
+    [Fact]
+    public void Si_Envio_word_wordy3_Debe_Retornarwor_nd_nwor_nd()
+    {
+        var result = Wrap("word word", 3);
+
+        result.Should().Be("wor\nd\nwor\nd");
+    }
     private string Wrap(string text, int col)
     {
-        if (text == "word")
-            return "wo\nrd";
-        return text;
+        var tamano = text.Length;
+        var respuesta = "";
+        var reglon = 0;
+
+
+        if (tamano <= col)
+            return text;
+
+        for (int i = 0; i < tamano; i++)
+        {
+            if (reglon < col)
+            {
+                respuesta += text[i];
+                reglon++;
+            }
+            else
+            {
+                respuesta += "\n";
+                respuesta += text[i];
+                reglon = 1; 
+            }
+        }
+
+        return respuesta;
     }
 }
