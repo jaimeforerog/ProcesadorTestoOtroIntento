@@ -19,10 +19,17 @@ public class WordWrapTest
 
         result.Should().Be("this");
     }
+    [Fact]
+    public void Si_envio_Wordy2_Debe_Retornarwo_nrd()
+    {
+        var result = Wrap("word", 2);
+
+        result.Should().Be("wo\nrd");
+    }
     private string Wrap(string text, int col)
     {
-        return "";
-        
+        return text;
+
     }
     
 }
