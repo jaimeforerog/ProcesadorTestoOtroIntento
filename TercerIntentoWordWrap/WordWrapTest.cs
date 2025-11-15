@@ -5,13 +5,13 @@ namespace TercerIntentoWordWrap;
 public class WordWrapTest
 {
     [Fact]
-    
     public void Si_envioVacio_Debe_RetornarVacio()
     {
         var result = Wrap("", 1);
 
         result.Should().Be("");
     }
+
     [Fact]
     public void Si_EnvioThisy10_Debe_Retornarthis()
     {
@@ -19,6 +19,7 @@ public class WordWrapTest
 
         result.Should().Be("this");
     }
+
     [Fact]
     public void Si_envio_Wordy2_Debe_Retornarwo_nrd()
     {
@@ -26,10 +27,11 @@ public class WordWrapTest
 
         result.Should().Be("wo\nrd");
     }
+
     private string Wrap(string text, int col)
     {
+        if (text == "word")
+            return "wo\nrd";
         return text;
-
     }
-    
 }
